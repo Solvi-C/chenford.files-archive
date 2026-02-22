@@ -1491,3 +1491,7 @@ input::placeholder{
 .carousel-btn.right {
   right: -50px;
 }
+
+.quick-access-button:hover {
+  cursor: pointer;
+}
