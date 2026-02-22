@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- ================= META ================= -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>requests — chenford.files archives system</title>
+
+  <link rel="icon" type="image/png" href="photos/favicon.png">
+
+  <!-- ================= FONTS ================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+  <!-- ================= CSS ================= -->
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+  <!-- ===================================================== -->
+  <!-- ================= OUTER CONTAINER =================== -->
+  <!-- ===================================================== -->
+  <div id="large-container">
+
+
+    <!-- ===================================================== -->
+    <!-- ======================== TOP BAR ==================== -->
+    <!-- ===================================================== -->
+    <header id="top-bar">
+
+      <div id="left-side">
+
+        <!-- ✏️ EDIT PROFILE IMAGE -->
+        <img id="pfp" src="photos/profile.jpg" alt="Profile" />
+
+        <div id="title-container">
+          <!-- ✏️ EDIT TITLE -->
+          <h1 id="title">CHENFORD.FILES ARCHIVE SYSTEM</h1>
+
+          <!-- ✏️ EDIT SUBTITLE -->
+          <h2 id="title-subtext">
+            <i>scene pack database</i>
+          </h2>
+        </div>
+
+      </div>
+
+      <div id="right-side">
+        <div id="search-bar">
+
+          <!-- ✏️ EDIT PLACEHOLDER -->
+          <input
+            type="text"
+            id="search-input"
+            placeholder="ENTER SCENE PACK NAME..."
+          />
+
+          <button id="search-button" type="button" aria-label="Search">
+            <img
+              id="magnifying-glass"
+              src="photos/magnifyingglass.png"
+              alt=""
+            />
+          </button>
+
+          <!-- ✏️ EDIT LOGOUT TEXT -->
+          <button id="log-out" type="button">LOG OUT</button>
+
+        </div>
+      </div>
+
+    </header>
+    <!-- ===================== END TOP BAR ===================== -->
+
+
+    <!-- ===================================================== -->
+    <!-- ================= MAIN CONTENT WRAP ================== -->
+    <!-- ===================================================== -->
+    <div id="main-content-container">
+
+
+      <!-- ================================================= -->
+      <!-- ===================== SIDEBAR ==================== -->
+      <!-- ================================================= -->
+      <aside id="side-bar">
+
+        <a class="nav-item nav-item-dash" href="index.html">
+          <span><img class="nav-icon" src="photos/navdashicon2.png" alt="" /></span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+
+        <a class="nav-item" href="howtouse.html">
+          <span><img class="nav-icon" src="photos/navhowtoicon.png" alt="" /></span>
+          <span class="nav-text">How to Use</span>
+        </a>
+
+        <a class="nav-item" href="library.html">
+          <span><img class="nav-icon" src="photos/navlibicon.png" alt="" /></span>
+          <span class="nav-text">Library</span>
+        </a>
+
+        <!-- ACTIVE PAGE -->
+        <a class="nav-item nav-item-active" href="requests.html">
+          <span><img class="nav-icon" src="photos/navrequesticon2.png" alt="" /></span>
+          <span class="nav-text">Requests</span>
+        </a>
+
+      </aside>
+      <!-- =================== END SIDEBAR =================== -->
+
+
+      <!-- ================================================= -->
+      <!-- ===================== MAIN AREA ================== -->
+      <!-- ================================================= -->
+      <main id="main-content">
+
+
+        <!-- ================= STAT BAR ================= -->
+        <div id="main-content-top-bar">
+
+          <!-- ✏️ EDIT TOTAL FILE COUNT -->
+          <span class="stat-label">TOTAL FILES:</span>
+          <span class="stat-value" id="stat-total">0</span>
+
+          <span id="stat-divider">|</span>
+
+          <!-- ✏️ EDIT LATEST UPDATE -->
+          <span class="stat-label">LATEST UPDATE:</span>
+          <span class="stat-value" id="stat-latest">—</span>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- ================= REQUESTS LAYOUT =============== -->
+        <!-- ================================================= -->
+        <section id="requests-layout">
+
+
+          <!-- ============================================ -->
+          <!-- ================= LEFT SIDE ================ -->
+          <!-- ============================================ -->
+          <div id="requests-left">
+
+
+            <!-- ================= PROGRESS CARD =============== -->
+            <div class="progress-card">
+
+              <div class="progress-card-header">
+                <!-- ✏️ EDIT TITLE IF NEEDED -->
+                <span class="progress-title">CURRENTLY IN PROGRESS</span>
+
+                <!-- ✏️ EDIT BADGE NUMBER -->
+                <span class="progress-badge">1 ACTIVE</span>
+              </div>
+
+              <div class="progress-card-body">
+
+                <div class="progress-icon">🎬</div>
+
+                <!-- ✏️ EDIT MAIN MESSAGE -->
+                <div class="progress-main-text">
+                  Chenford Season 8 Scenes
+                </div>
+
+                <!-- ✏️ EDIT SUB MESSAGE -->
+                <div class="progress-sub-text">
+                  
+                </div>
+
+              </div>
+
+            </div>
+            <!-- ============ END PROGRESS CARD ============ -->
+
+
+            <!-- ================= UPCOMING TABLE =============== -->
+            <div class="panel-card" id="upcoming-card">
+
+              <div id="upcoming-table-wrap">
+
+                <table id="upcoming-table">
+
+                  <!-- FIXED STRUCTURE (keeps styling identical) -->
+                  <thead>
+                    <tr>
+                      <th class="upcoming-name-label num-head">UPCOMING</th>
+                      <th class="upcoming-name-label name-head">NAME</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+
+                    <!-- 🔁 DUPLICATE THIS ROW TO ADD MORE -->
+                    <tr>
+                      <td class="num">1.</td>
+                      <td class="name">Lucy Chen Season 5</td>
+                    </tr>
+
+                    <tr>
+                      <td class="num">2.</td>
+                      <td class="name">Angela Lopez Season 7</td>
+                    </tr>
+
+                    <tr>
+                      <td class="num">3.</td>
+                      <td class="name">Jackson and Lucy</td>
+                    </tr>
+
+                    <tr>
+                      <td class="num">4.</td>
+                      <td class="name">Tim and Angela (being iconic)</td>
+                    </tr>
+
+                    <tr>
+                      <td class="num">4.</td>
+                      <td class="name">Tim and Angela (being iconic)</td>
+                    </tr>
+
+                    <tr>
+                      <td class="num">4.</td>
+                      <td class="name">Tim and Angela (being iconic)</td>
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </div>
+            </div>
+            <!-- ============ END UPCOMING TABLE ============ -->
+
+
+          </div>
+          <!-- ============ END LEFT SIDE ============ -->
+
+
+          <!-- ============================================ -->
+          <!-- ================= RIGHT SIDE =============== -->
+          <!-- ============================================ -->
+          <div id="requests-right">
+
+            <div class="panel-card" id="request-methods-card">
+
+              <div class="panel-title centered">
+                REQUEST METHODS
+              </div>
+
+              <div class="panel-body methods-body">
+
+                <ol class="methods-list">
+
+                  <li>
+                    <div class="methods-label">Use:</div>
+
+                    <!-- ✏️ REPLACE LINK -->
+                    <a
+                      class="methods-link"
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSdilVCLPHEzhCIGMUSor4YNxWK6s13O95cnAjhsAJGBIHKh8Q/viewform?usp=publish-editor"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <img src="photos/formsicon.PNG" alt="Instagram" class="linkicons"/>
+                    </a>
+
+                    <div class="methods-note">
+                      to submit your request (will get to this request faster)
+                    </div>
+                  </li>
+
+
+                  <li>
+                    go to instagram and comment under the “request” post:
+
+                    <!-- ✏️ REPLACE LINK -->
+                    <br>
+                    <a
+                      class="methods-link"
+                      href="https://www.instagram.com/p/DBdwOKjJA356LrrkgtXnf6kf4RAzqUNKRzAktk0/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <img src="photos/instaicon.PNG" alt="Instagram" class="linkicons"/>
+                    </a>
+                  </li>
+
+                </ol>
+
+              </div>
+
+            </div>
+
+          </div>
+          <!-- ============ END RIGHT SIDE ============ -->
+
+
+        </section>
+        <!-- ============ END REQUESTS LAYOUT ============ -->
+
+
+      </main>
+      <!-- ================= END MAIN ================= -->
+
+    </div>
+    <!-- ============ END MAIN CONTENT WRAP ============ -->
+
+  </div>
+  <!-- ============ END LARGE CONTAINER ============ -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

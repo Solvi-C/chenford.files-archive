@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- ================= META ================= -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>library — chenford.files archives system</title>
+
+  <link rel="icon" type="image/png" href="photos/favicon.png">
+
+  <!-- ================= FONTS ================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+  <!-- ================= CSS ================= -->
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+  <!-- ===================================================== -->
+  <!-- ================= OUTER CONTAINER =================== -->
+  <!-- ===================================================== -->
+  <div id="large-container">
+
+
+    <!-- ===================================================== -->
+    <!-- ======================== TOP BAR ==================== -->
+    <!-- ===================================================== -->
+    <header id="top-bar">
+
+      <!-- LEFT SIDE -->
+      <div id="left-side">
+
+        <!-- ✏️ EDIT PROFILE IMAGE -->
+        <img id="pfp" src="photos/profile.jpg" alt="Profile" />
+
+        <div id="title-container">
+          <!-- ✏️ EDIT TITLE -->
+          <h1 id="title">CHENFORD.FILES ARCHIVE SYSTEM</h1>
+
+          <!-- ✏️ EDIT SUBTITLE -->
+          <h2 id="title-subtext">
+            <i>scene pack database</i>
+          </h2>
+        </div>
+
+      </div>
+
+
+      <!-- RIGHT SIDE -->
+      <div id="right-side">
+        <div id="search-bar">
+
+          <!-- ✏️ EDIT PLACEHOLDER -->
+          <input
+            type="text"
+            id="search-input"
+            placeholder="ENTER SCENE PACK NAME..."
+          />
+
+          <button id="search-button" type="button" aria-label="Search">
+            <img
+              id="magnifying-glass"
+              src="photos/magnifyingglass.png"
+              alt=""
+            />
+          </button>
+
+          <!-- ✏️ EDIT LOGOUT TEXT -->
+          <button id="log-out" type="button">LOG OUT</button>
+
+        </div>
+      </div>
+
+    </header>
+    <!-- ===================== END TOP BAR ===================== -->
+
+
+    <!-- ===================================================== -->
+    <!-- ================= MAIN CONTENT WRAP ================== -->
+    <!-- ===================================================== -->
+    <div id="main-content-container">
+
+
+      <!-- ================================================= -->
+      <!-- ===================== SIDEBAR ==================== -->
+      <!-- ================================================= -->
+      <aside id="side-bar">
+
+        <a class="nav-item nav-item-dash" href="index.html">
+          <span><img class="nav-icon" src="photos/navdashicon2.png" alt="" /></span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+
+        <a class="nav-item" href="howtouse.html">
+          <span><img class="nav-icon" src="photos/navhowtoicon.png" alt="" /></span>
+          <span class="nav-text">How to Use</span>
+        </a>
+
+        <!-- ACTIVE PAGE -->
+        <a class="nav-item nav-item-active" href="library.html">
+          <span><img class="nav-icon" src="photos/navlibicon2.png" alt="" /></span>
+          <span class="nav-text">Library</span>
+        </a>
+
+        <a class="nav-item" href="requests.html">
+          <span><img class="nav-icon" src="photos/navrequesticon.png" alt="" /></span>
+          <span class="nav-text">Requests</span>
+        </a>
+
+      </aside>
+      <!-- =================== END SIDEBAR =================== -->
+
+
+      <!-- ================================================= -->
+      <!-- ===================== MAIN AREA ================== -->
+      <!-- ================================================= -->
+      <main id="main-content">
+
+
+        <!-- ================= STAT BAR ================= -->
+        <div id="main-content-top-bar">
+
+          <!-- 🔁 JS UPDATES THESE VALUES -->
+          <span class="stat-label">TOTAL FILES:</span>
+          <span class="stat-value" id="stat-total">0</span>
+
+          <span id="stat-divider">|</span>
+
+          <span class="stat-label">LATEST UPDATE:</span>
+          <span class="stat-value" id="stat-latest">—</span>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- ================= LIBRARY LAYOUT =============== -->
+        <!-- ================================================= -->
+        <section id="library-layout">
+
+
+          <!-- ============================================ -->
+          <!-- ================ TABLE SECTION ============ -->
+          <!-- ============================================ -->
+          <div id="library-table-section">
+
+
+            <!-- ================= FILTER ROW =============== -->
+            <!-- 🔁 OPTIONS FILLED BY JS OR EDIT MANUALLY -->
+            <div id="library-filters">
+
+              <select id="filter-season" class="filter-select">
+                <option value="">SEASON</option>
+              </select>
+
+              <div class="filter-select advanced-wrapper">
+                <button id="advanced-toggle" type="button">
+                  ADVANCED
+                </button>
+
+                <div id="advanced-tags" class="advanced-hidden"></div>
+              </div>
+
+              <button id="filter-clear" type="button">
+                CLEAR
+              </button>
+
+            </div>
+
+
+            <!-- ================= TABLE WRAPPER =============== -->
+            <div id="library-table-wrapper">
+
+              <table id="library-table">
+
+                <thead>
+                  <tr>
+                    <th id="lib-id">ID</th>
+                    <th id="lib-title">TITLE</th>
+                    <th id="lib-download">DOWNLOAD</th>
+                    <th id="lib-date">DATE ADDED</th>
+                    <th id="lib-size">SIZE</th>
+                  </tr>
+                </thead>
+
+                <!-- 🔁 ROWS INSERTED BY JS -->
+                <tbody id="library-tbody">
+                  <!-- DO NOT MANUALLY ADD ROWS HERE -->
+                </tbody>
+
+              </table>
+
+            </div>
+
+          </div>
+          <!-- ============ END TABLE SECTION ============ -->
+
+
+          <!-- ============================================ -->
+          <!-- ================ INFO PANEL =============== -->
+          <!-- ============================================ -->
+          <aside id="library-info-panel">
+
+            <!-- Header -->
+            <div id="library-info-header">
+              <div id="library-info-heading">
+                SCENE PACK INFO
+              </div>
+            </div>
+
+            <!-- 🔁 JS UPDATES THIS TITLE -->
+            <div id="library-info-title">
+              [SCENE PACK NAME]
+            </div>
+
+
+            <!-- Season / Episode -->
+            <div class="library-info-block">
+              <div>
+                <strong>Season:</strong>
+                <span id="info-season">—</span>
+              </div>
+            </div>
+
+
+            <!-- Tags -->
+            <div class="library-info-block">
+              <div class="tags-label">
+                <strong>TAGS:</strong>
+              </div>
+
+              <div id="tag-container">
+                <!-- 🔁 JS INSERTS TAGS HERE -->
+                <div class="library-tags" id="info-tags"></div>
+              </div>
+
+              <br>
+              <div>
+                <strong>NOTES:</strong>
+              </div>
+
+              <div id="info-notes">
+                —
+              </div>
+            </div>
+
+
+            <!-- Preview -->
+            <div id="library-preview">
+
+              <!-- 🔁 JS CONTROLS VISIBILITY -->
+              <img id="preview-img" alt="" hidden />
+              <video id="preview-video" controls playsinline hidden></video>
+
+              <!-- Visible when no preview loaded -->
+              <div id="preview-placeholder">
+                PHOTO OR VIDEO
+              </div>
+
+            </div>
+
+
+            <!-- Download Button -->
+            <!-- 🔁 JS ENABLES/DISABLES -->
+            <button
+              id="library-download-button"
+              type="button"
+              disabled
+            >
+              DOWNLOAD SCENE PACK
+            </button>
+
+          </aside>
+          <!-- ============ END INFO PANEL ============ -->
+
+
+        </section>
+        <!-- ============ END LIBRARY LAYOUT ============ -->
+
+
+      </main>
+      <!-- ================= END MAIN ================= -->
+
+    </div>
+    <!-- ============ END MAIN CONTENT WRAP ============ -->
+
+  </div>
+  <!-- ============ END LARGE CONTAINER ============ -->
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

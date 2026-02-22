@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>how to use — chenford.files archives system</title>
+  <link rel="icon" type="image/png" href="photos/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="large-container">
+
+    <!-- TOP BAR -->
+    <header id="top-bar">
+      <div id="left-side">
+        <img id="pfp" src="photos/profile.jpg" alt="Profile" />
+        <div id="title-container">
+          <h1 id="title">CHENFORD.FILES ARCHIVE SYSTEM</h1>
+          <h2 id="title-subtext"><i>scene pack database</i></h2>
+        </div>
+      </div>
+
+      <div id="right-side">
+        <div id="search-bar">
+          <input type="text" placeholder="SEARCH ARCHIVES..." id="search-input" />
+          <button id="search-button" type="button">
+            <img id="magnifying-glass" src="photos/magnifyingglass.png" alt="" />
+          </button>
+          <button id="log-out" type="button">LOG OUT</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <div id="main-content-container">
+
+      <!-- SIDEBAR -->
+      <aside id="side-bar">
+        <a class="nav-item nav-item-dash" href="index.html">
+          <span><img class="nav-icon" src="photos/navdashicon2.png" alt="" /></span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+
+        <a class="nav-item nav-item-active" href="howtouse.html">
+          <span><img class="nav-icon" src="photos/navhowtoicon2.PNG" alt="" /></span>
+          <span class="nav-text">How to Use</span>
+        </a>
+
+        <!-- ACTIVE: LIBRARY -->
+        <a class="nav-item" href="library.html">
+          <span><img class="nav-icon" src="photos/navlibicon.png" alt="" /></span>
+          <span class="nav-text">Library</span>
+        </a>
+
+        <a class="nav-item" href="requests.html">
+          <span><img class="nav-icon" src="photos/navrequesticon.png" alt="" /></span>
+          <span class="nav-text">Requests</span>
+        </a>
+      </aside>
+
+      <!-- MAIN -->
+      <main id="main-content">
+
+        <!-- STAT BAR -->
+        <div id="main-content-top-bar">
+
+          <!-- ✏️ EDIT TOTAL FILE COUNT -->
+          <span class="stat-label">TOTAL FILES:</span>
+          <span class="stat-value" id="stat-total">0</span>
+
+          <span id="stat-divider">|</span>
+
+          <!-- ✏️ EDIT LATEST UPDATE -->
+          <span class="stat-label">LATEST UPDATE:</span>
+          <span class="stat-value" id="stat-latest">—</span>
+
+        </div>
+
+        <!-- LAYOUT -->
+        <div class="preview-section">
+
+          <div class="preview-toggle">
+            <button class="toggle-btn active" data-view="mobile">PHONE</button>
+            <button class="toggle-btn" data-view="desktop">DESKTOP</button>
+          </div>
+
+          <div class="carousel-container">
+
+            <button class="carousel-btn left">&#60;</button>
+
+            <div class="carousel">
+              <video class="carousel-media mobile active" autoplay muted loop playsinline>
+                <source src="howtouse photos/howtousevideo.mov" type="video/mp4">
+              </video>
+
+              <img src="howtouse photos/howtouse1.png" class="carousel-img desktop">
+              <img src="howtouse photos/howtouse2.png" class="carousel-img desktop">
+              <img src="howtouse photos/howtouse3.png" class="carousel-img desktop">
+              <img src="howtouse photos/howtouse4.png" class="carousel-img desktop">
+              <img src="howtouse photos/howtouse5.png" class="carousel-img desktop">
+            </div>
+
+            <button class="carousel-btn right">&#62;</button>
+
+          </div>
+        </div>
+        
+      </main>
+    </div>
+  </div>
+  <script>
+  let currentIndex = 0;
+  let currentView = "mobile";
+
+  const toggleButtons = document.querySelectorAll(".toggle-btn");
+  const images = document.querySelectorAll(".carousel-media, .carousel-img");  
+  const leftBtn = document.querySelector(".carousel-btn.left");
+  const rightBtn = document.querySelector(".carousel-btn.right");
+
+  function updateCarousel() {
+    images.forEach(img => img.classList.remove("active"));
+
+    const filtered = Array.from(images).filter(img =>
+      img.classList.contains(currentView)
+    );
+
+    if (filtered.length > 0) {
+      filtered[currentIndex].classList.add("active");
+    }
+
+    if (filtered.length <= 1) {
+      leftBtn.style.display = "none";
+      rightBtn.style.display = "none";
+    } else {
+      leftBtn.style.display = "block";
+      rightBtn.style.display = "block";
+    }
+  }
+
+  toggleButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      toggleButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      currentView = btn.dataset.view;
+      currentIndex = 0;
+      updateCarousel();
+    });
+  });
+
+  leftBtn.addEventListener("click", () => {
+    const filtered = Array.from(images).filter(img =>
+      img.classList.contains(currentView)
+    );
+
+    currentIndex = (currentIndex - 1 + filtered.length) % filtered.length;
+    updateCarousel();
+  });
+
+  rightBtn.addEventListener("click", () => {
+    const filtered = Array.from(images).filter(img =>
+      img.classList.contains(currentView)
+    );
+
+    currentIndex = (currentIndex + 1) % filtered.length;
+    updateCarousel();
+  });
+
+  updateCarousel();
+  </script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

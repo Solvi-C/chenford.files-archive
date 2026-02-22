@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- ================= META ================= -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>chenford.files archives system</title>
+
+  <link rel="icon" type="image/png" href="photos/favicon.png">
+
+  <!-- ================= FONTS ================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+  <!-- ================= CSS ================= -->
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+  <!-- ===================================================== -->
+  <!-- ================= OUTER CONTAINER =================== -->
+  <!-- ===================================================== -->
+  <div id="large-container">
+
+
+    <!-- ===================================================== -->
+    <!-- ======================== TOP BAR ==================== -->
+    <!-- ===================================================== -->
+    <header id="top-bar">
+
+      <!-- LEFT SIDE -->
+      <div id="left-side">
+
+        <!-- ✏️ EDIT PROFILE IMAGE -->
+        <img id="pfp" src="photos/profile.jpg" alt="Profile" />
+
+        <div id="title-container">
+          <!-- ✏️ EDIT TITLE -->
+          <h1 id="title">CHENFORD.FILES ARCHIVE SYSTEM</h1>
+
+          <!-- ✏️ EDIT SUBTITLE -->
+          <h2 id="title-subtext"><i>scene pack database</i></h2>
+        </div>
+
+      </div>
+
+
+      <!-- RIGHT SIDE -->
+      <div id="right-side">
+        <div id="search-bar">
+
+          <!-- ✏️ EDIT PLACEHOLDER -->
+          <input
+            type="text"
+            id="search-input"
+            placeholder="ENTER SCENE PACK NAME..."
+          />
+
+          <button id="search-button" aria-label="Search">
+            <img
+              id="magnifying-glass"
+              src="photos/magnifyingglass.png"
+              alt=""
+            />
+          </button>
+
+          <!-- ✏️ EDIT LOGOUT TEXT -->
+          <button id="log-out" type="button">LOG OUT</button>
+
+        </div>
+      </div>
+
+    </header>
+    <!-- ===================== END TOP BAR ===================== -->
+
+
+    <!-- ===================================================== -->
+    <!-- ================= MAIN CONTENT WRAP ================== -->
+    <!-- ===================================================== -->
+    <div id="main-content-container">
+
+
+      <!-- ================================================= -->
+      <!-- ===================== SIDEBAR ==================== -->
+      <!-- ================================================= -->
+      <aside id="side-bar">
+
+        <!-- Active -->
+        <a class="nav-item nav-item-dash nav-item-active" href="#">
+          <span><img class="nav-icon" src="photos/navdashicon.png" alt="" /></span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+
+        <!-- ✏️ EDIT LINKS IF NEEDED -->
+        <a class="nav-item" href="howtouse.html">
+          <span><img class="nav-icon" src="photos/navhowtoicon.png" alt="" /></span>
+          <span class="nav-text">How to Use</span>
+        </a>
+
+        <a class="nav-item" href="library.html">
+          <span><img class="nav-icon" src="photos/navlibicon.png" alt="" /></span>
+          <span class="nav-text">Library</span>
+        </a>
+
+        <a class="nav-item" href="requests.html">
+          <span><img class="nav-icon" src="photos/navrequesticon.png" alt="" /></span>
+          <span class="nav-text">Requests</span>
+        </a>
+
+      </aside>
+      <!-- =================== END SIDEBAR =================== -->
+
+
+      <!-- ================================================= -->
+      <!-- ===================== MAIN AREA ================== -->
+      <!-- ================================================= -->
+      <main id="main-content">
+
+
+        <!-- ================= DASHBOARD STATS ================ -->
+        <div id="main-content-top-bar">
+
+          <!-- ✏️ EDIT TOTAL FILE COUNT -->
+          <span class="stat-label">TOTAL FILES:</span>
+          <span class="stat-value" id="stat-total">0</span>
+
+          <span id="stat-divider">|</span>
+
+          <!-- ✏️ EDIT LATEST UPDATE -->
+          <span class="stat-label">LATEST UPDATE:</span>
+          <span class="stat-value" id="stat-latest">—</span>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- ================== DASHBOARD GRID =============== -->
+        <!-- ================================================= -->
+        <section id="dashboard-grid">
+
+
+          <!-- =========================================== -->
+          <!-- ============== UPDATE LOG CARD =========== -->
+          <!-- =========================================== -->
+          <div id="card-update-card">
+
+            <div id="update-title">UPDATE LOG</div>
+
+            <div id="card-update-scroll">
+
+              <!-- 🔁 DUPLICATE THIS BLOCK FOR NEW UPDATE -->
+              <div class="update-log">
+
+                <div class="update-log-date">
+                  <!-- ✏️ EDIT DATE -->
+                  01.01.2026 —
+                  <span class="update-name">NEW SCENE PACK / UI</span>
+                </div>
+
+                <div class="update-log-text">
+                  <!-- ✏️ EDIT DETAILS -->
+                  <em>
+                    - Added <b>Chenford Season 8</b> scene pack (1.0GB)<br>
+                    - Brand new UI with search features
+                  </em>
+                </div>
+
+              </div>
+              <!-- 🔁 END DUPLICATE BLOCK -->
+
+            </div>
+          </div>
+          <!-- ============ END UPDATE CARD ============ -->
+
+
+          <!-- =========================================== -->
+          <!-- ============== RIGHT COLUMN ============== -->
+          <!-- =========================================== -->
+          <div id="right-column">
+
+
+            <!-- ================= CREDITS ================= -->
+            <div id="credits-panel">
+
+              <div id="credits-title">PLEASE GIVE CREDITS</div>
+
+              <div id="credits-body">
+                insta:
+                <!-- ✏️ EDIT LINK -->
+                <a class="account-links" href="https://www.instagram.com/chenford.files/">
+                  @chenford.files
+                </a><br>
+
+                tiktok:
+                <!-- ✏️ EDIT LINK -->
+                <a class="account-links" href="https://www.tiktok.com/@nightlightx.files?_r=1&_t=ZP-93qqxPH7BMc">
+                  @nightlightx.files
+                </a>
+              </div>
+
+            </div>
+
+
+            <!-- ============== RECENTLY ADDED ============= -->
+            <div id="recently-added-panel">
+
+              <div id="recently-added-title">RECENTLY ADDED</div>
+
+              <div id="recently-added-body">
+
+                <div id="recently-table">
+
+                  <table id="recently-added-table">
+
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>TITLE</th>
+                        <th>DOWNLOAD</th>
+                        <th>DATE</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                      <!-- 🔁 DUPLICATE THIS ROW FOR NEW FILE -->
+                      <tr>
+                        <!-- ✏️ EDIT ID -->
+                        <td></td>
+
+                        <!-- ✏️ EDIT TITLE -->
+                        <td></td>
+
+                        <!-- ✏️ EDIT DOWNLOAD LINK + SIZE -->
+                        <td class="centered">
+                          <a class="download-icon" href="#">
+                            
+                            <!-- <img
+                              class="download-photo-icon"
+                              src="photos/downloadpic.png"
+                              alt="" 
+                            /> -->
+                          </a>
+                        </td>
+
+                        <!-- ✏️ EDIT DATE -->
+                        <td></td>
+                      </tr>
+                      <!-- 🔁 END DUPLICATE ROW -->
+
+                    </tbody>
+
+                  </table>
+
+                </div>
+              </div>
+
+            </div>
+
+
+            <!-- ============== QUICK ACCESS ============== -->
+            <div id="quick-access-panel">
+
+              <div id="quick-access-title">QUICK ACCESS</div>
+
+              <div id="quick-access-body">
+                <div id="quick-access-grid">
+
+                  <!-- ✏️ EDIT TEXT OR ADD LINKS IN JS -->
+                  <button class="quick-access-button" type="button">TIKTOK</button>
+                  <button class="quick-access-button" type="button">INSTAGRAM</button>
+                  <button class="quick-access-button" type="button">HELP PAGE</button>
+                  <button class="quick-access-button" type="button">SUBMIT REQUEST</button>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <!-- ============ END RIGHT COLUMN ============ -->
+
+        </section>
+      </main>
+      <!-- ================= END MAIN ================= -->
+
+    </div>
+    <!-- ============ END MAIN CONTENT WRAP ============ -->
+
+  </div>
+  <!-- ============ END LARGE CONTAINER ============ -->
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
