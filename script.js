@@ -274,7 +274,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "jackson/lucy",
         "tim/angela",
         "angela/nyla",
-        "john/lucy"
+        "john/lucy",
+         "nyla/lucy"
       ],
       "CHARACTERS": [
         "lucy chen",
