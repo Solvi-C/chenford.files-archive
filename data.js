@@ -3,6 +3,18 @@
  ***********************/
 const SCENE_PACKS = [
   {
+      id: "S701A",
+      title: "Chenford Season 8",
+      season: "8",
+      tags: ["chenford", "lucy chen", "tim bradfod", "compilation", "romance", "still updating"],
+      dateAdded: "02-23-2026",
+      size: "623.2MB",
+      download: "https://mega.nz/file/N9QG3ZbJ#KJy07Ja67dPuxxciZATY6z8JBL4Re2FZQjyu1Ce3ul4",
+      preview: "scenepack photos/chenfords8.JPEG",
+      note: "up to episode 7 (Baja)",
+    },
+  
+  {
     id: "S501B",
     title: "Angela Lopez Season 5 Scenes",
     season: "5",
