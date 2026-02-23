@@ -3,7 +3,19 @@
  ***********************/
 const SCENE_PACKS = [
   {
-      id: "S701A",
+      id: "S801B",
+      title: "Baja UC",
+      season: "8",
+      tags: ["lucy chen", "nyla harper", "chenford", "jyla", "action", "angst", "undercover op", "story arc"],
+      dateAdded: "02-23-2026",
+      size: "557.9MB",
+      download: "https://mega.nz/file/NlwVlQ6C#1yFD9igdutZG4Dth6RmtCygTAR4cSpWc2RbQj0R289U",
+      preview: "scenepack photos/bajauc.jpg",
+      notes: "includes before, during, and after the op",
+    },
+  
+  {
+      id: "S801A",
       title: "Chenford Season 8",
       season: "8",
       tags: ["chenford", "lucy chen", "tim bradfod", "compilation", "romance", "still updating"],
