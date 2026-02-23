@@ -11,7 +11,7 @@ const SCENE_PACKS = [
       size: "623.2MB",
       download: "https://mega.nz/file/N9QG3ZbJ#KJy07Ja67dPuxxciZATY6z8JBL4Re2FZQjyu1Ce3ul4",
       preview: "scenepack photos/chenfords8.JPEG",
-      note: "up to episode 7 (Baja)",
+      notes: "up to episode 7 (Baja)",
     },
   
   {
