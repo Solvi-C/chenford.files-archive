@@ -32,11 +32,11 @@ const SCENE_PACKS = [
       title: "Chenford Season 8",
       season: "8",
       tags: ["chenford", "lucy chen", "tim bradfod", "compilation", "romance", "still updating"],
-      dateAdded: "02-23-2026",
-      size: "623.2MB",
-      download: "https://mega.nz/file/N9QG3ZbJ#KJy07Ja67dPuxxciZATY6z8JBL4Re2FZQjyu1Ce3ul4",
+      dateAdded: "03-11-2026",
+      size: "1.36 GB",
+      download: "https://mega.nz/file/c0JliBbb#UaS1XYxIoqeTdJR-qbMegnsDHQEyqvEJbDRvre-SL_I",
       preview: "scenepack photos/chenfords8.JPEG",
-      notes: "up to episode 7 (Baja)",
+      notes: "up to episode 10 (His Name Was Martin)",
     },
   
   {
