@@ -1,9 +1,50 @@
 console.log("SCRIPT LOADED");
-/* =======================================================
-   GLOBAL SEARCH HANDLER (ALL PAGES)
-   ======================================================= */
 
+/* =======================================================
+   GLOBAL HELPERS
+   ======================================================= */
+function latestDate(packs) {
+  const validDates = packs
+    .map((p) => p.dateAdded)
+    .filter(Boolean)
+    .map((dateStr) => {
+      const [month, day, year] = dateStr.split("-").map(Number);
+      const parsedDate = new Date(year, month - 1, day);
+
+      return {
+        original: dateStr,
+        parsed: parsedDate
+      };
+    })
+    .filter((d) => !isNaN(d.parsed.getTime()));
+
+  if (!validDates.length) return "—";
+
+  validDates.sort((a, b) => b.parsed - a.parsed);
+  return validDates[0].original;
+}
+
+function updateGlobalStats() {
+  const statTotal = document.getElementById("stat-total");
+  const statLatest = document.getElementById("stat-latest");
+
+  if (
+    statTotal &&
+    statLatest &&
+    typeof SCENE_PACKS !== "undefined" &&
+    Array.isArray(SCENE_PACKS)
+  ) {
+    statTotal.textContent = String(SCENE_PACKS.length);
+    statLatest.textContent = latestDate(SCENE_PACKS);
+  }
+}
+
+/* =======================================================
+   GLOBAL SEARCH HANDLER + GLOBAL STATS
+   ======================================================= */
 document.addEventListener("DOMContentLoaded", () => {
+  updateGlobalStats();
+
   const input = document.getElementById("search-input");
   const button = document.getElementById("search-button");
   const logoutBtn = document.getElementById("log-out");
@@ -25,12 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentPage.includes("library.html")) {
       input.value = query;
 
-      if (typeof applyFilters === "function") {
-        applyFilters();
+      if (typeof window.applyFilters === "function") {
+        window.applyFilters();
       }
     } else {
-      window.location.href =
-        `library.html?search=${encodeURIComponent(query)}`;
+      window.location.href = `library.html?search=${encodeURIComponent(query)}`;
     }
   }
 
@@ -40,11 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+/* =======================================================
+   LIBRARY PAGE ONLY
+   ======================================================= */
 document.addEventListener("DOMContentLoaded", () => {
-
-  /***********************
-   * 2) GRAB ELEMENTS
-   ***********************/
   const tbody = document.getElementById("library-tbody");
   const infoNotes = document.getElementById("info-notes");
 
@@ -53,41 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const filterSeason = document.getElementById("filter-season");
   const advancedTagsContainer = document.getElementById("advanced-tags");
-  let selectedAdvancedTags = [];
   const advancedToggle = document.getElementById("advanced-toggle");
-
-  if (advancedToggle && advancedTagsContainer) {
-    advancedToggle.addEventListener("click", (e) => {
-      e.stopPropagation();
-
-      const wrapper = advancedToggle.closest(".advanced-wrapper");
-
-      wrapper.classList.toggle("open");
-      advancedTagsContainer.classList.toggle("show");
-    });
-  }
-
-  /* ===== ADD THIS RIGHT HERE ===== */
-  function closeAdvancedDropdown() {
-    const wrapper = advancedToggle?.closest(".advanced-wrapper");
-    if (!wrapper) return;
-
-    wrapper.classList.remove("open");
-    advancedTagsContainer.classList.remove("show");
-  }
-
-  /* ===== CLOSE WHEN CLICKING OUTSIDE ===== */
-  document.addEventListener("click", (e) => {
-    const wrapper = advancedToggle?.closest(".advanced-wrapper");
-    if (!wrapper) return;
-
-    if (!wrapper.contains(e.target)) {
-      closeAdvancedDropdown();
-    }
-  });
-
-
-
   const filterClear = document.getElementById("filter-clear");
 
   const searchInput = document.getElementById("search-input");
@@ -100,44 +105,68 @@ document.addEventListener("DOMContentLoaded", () => {
   const previewBox = document.getElementById("library-preview");
   const downloadBtn = document.getElementById("library-download-button");
 
-  // If this page doesn't have the library elements, do nothing safely
-  if (!tbody || !searchInput || !infoTitle) return;
+  let selectedAdvancedTags = [];
 
-  /***********************
-   * 3) HELPERS
-   ***********************/
+  // If this page doesn't have the library elements, do nothing
+  if (
+    !tbody ||
+    !searchInput ||
+    !infoTitle ||
+    typeof SCENE_PACKS === "undefined" ||
+    !Array.isArray(SCENE_PACKS)
+  ) {
+    return;
+  }
+
+  /* =======================
+     ADVANCED DROPDOWN
+     ======================= */
+  if (advancedToggle && advancedTagsContainer) {
+    advancedToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      const wrapper = advancedToggle.closest(".advanced-wrapper");
+      if (!wrapper) return;
+
+      wrapper.classList.toggle("open");
+      advancedTagsContainer.classList.toggle("show");
+    });
+  }
+
+  function closeAdvancedDropdown() {
+    const wrapper = advancedToggle?.closest(".advanced-wrapper");
+    if (!wrapper || !advancedTagsContainer) return;
+
+    wrapper.classList.remove("open");
+    advancedTagsContainer.classList.remove("show");
+  }
+
+  document.addEventListener("click", (e) => {
+    const wrapper = advancedToggle?.closest(".advanced-wrapper");
+    if (!wrapper) return;
+
+    if (!wrapper.contains(e.target)) {
+      closeAdvancedDropdown();
+    }
+  });
+
+  /* =======================
+     HELPERS
+     ======================= */
   const uniqSorted = (arr) =>
     Array.from(new Set(arr))
       .filter((v) => v !== undefined && v !== null && `${v}`.trim() !== "")
       .sort((a, b) => Number(a) - Number(b));
 
-  function latestDate(packs) {
-  const validDates = packs
-    .map((p) => p.dateAdded)
-    .filter(Boolean)
-    .map((dateStr) => {
-      const [month, day, year] = dateStr.split("-").map(Number);
-      const parsedDate = new Date(year, month - 1, day);
-
-      return {
-        original: dateStr,
-        parsed: parsedDate
-      };
-    })
-    .filter((d) => !isNaN(d.parsed.getTime()));
-
-  if (!validDates.length) return "—";
-
-  validDates.sort((a, b) => b.parsed - a.parsed);
-  return validDates[0].original;
-}
-
   function setPreview(previewUrl) {
+    if (!previewBox) return;
+
     if (!previewUrl) {
       previewBox.style.backgroundImage = "";
       previewBox.textContent = "PHOTO OR VIDEO";
       return;
     }
+
     previewBox.textContent = "";
     previewBox.style.backgroundImage = `url("${previewUrl}")`;
     previewBox.style.backgroundSize = "cover";
@@ -146,6 +175,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setTags(tagsArr) {
+    if (!infoTags) return;
+
     infoTags.innerHTML = "";
     (tagsArr || []).forEach((tag) => {
       const chip = document.createElement("div");
@@ -157,31 +188,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateInfo(pack) {
     if (!pack) {
-      infoTitle.textContent = "[SCENE PACK NAME]";
-      infoSeason.textContent = "—";
-      infoEpisodes.textContent = "—";
-      infoTags.innerHTML = "";
+      if (infoTitle) infoTitle.textContent = "[SCENE PACK NAME]";
+      if (infoSeason) infoSeason.textContent = "—";
+      if (infoEpisodes) infoEpisodes.textContent = "—";
+      if (infoTags) infoTags.innerHTML = "";
       setPreview("");
-      downloadBtn.disabled = true;
-      downloadBtn.dataset.href = "";
-      infoNotes.textContent = "—";
+
+      if (downloadBtn) {
+        downloadBtn.disabled = true;
+        downloadBtn.dataset.href = "";
+      }
+
+      if (infoNotes) infoNotes.textContent = "—";
       return;
     }
 
-    infoTitle.textContent = pack.title;
-    infoSeason.textContent = Array.isArray(pack.season)
-    ? pack.season.join(", ")
-    : pack.season;
+    if (infoTitle) infoTitle.textContent = pack.title;
+    if (infoSeason) {
+      infoSeason.textContent = Array.isArray(pack.season)
+        ? pack.season.join(", ")
+        : pack.season;
+    }
+
+    if (infoEpisodes) {
+      infoEpisodes.textContent = pack.episodes || "—";
+    }
+
     setTags(pack.tags);
     setPreview(pack.preview);
-    infoNotes.innerHTML = pack.notes || "—";
 
-    if (pack.download && pack.download !== "#") {
-      downloadBtn.disabled = false;
-      downloadBtn.dataset.href = pack.download;
-    } else {
-      downloadBtn.disabled = true;
-      downloadBtn.dataset.href = "";
+    if (infoNotes) {
+      infoNotes.innerHTML = pack.notes || "—";
+    }
+
+    if (downloadBtn) {
+      if (pack.download && pack.download !== "#") {
+        downloadBtn.disabled = false;
+        downloadBtn.dataset.href = pack.download;
+      } else {
+        downloadBtn.disabled = true;
+        downloadBtn.dataset.href = "";
+      }
     }
   }
 
@@ -193,7 +240,6 @@ document.addEventListener("DOMContentLoaded", () => {
       tr.className = "library-row";
       tr.dataset.id = pack.id;
 
-      // 1️⃣ Only HTML goes here
       tr.innerHTML = `
         <td>${pack.id}</td>
         <td>${pack.title}</td>
@@ -210,18 +256,18 @@ document.addEventListener("DOMContentLoaded", () => {
         <td>${pack.size}</td>
       `;
 
-      // 2️⃣ NOW attach click to icon
       const downloadIcon = tr.querySelector(".download-icon-lib");
 
-      downloadIcon.addEventListener("click", (e) => {
-        e.stopPropagation(); // prevents row selection
+      if (downloadIcon) {
+        downloadIcon.addEventListener("click", (e) => {
+          e.stopPropagation();
 
-        if (pack.download && pack.download !== "#") {
-          window.open(pack.download, "_blank");
-        }
-      });
+          if (pack.download && pack.download !== "#") {
+            window.open(pack.download, "_blank");
+          }
+        });
+      }
 
-      // 3️⃣ Row selection logic
       tr.addEventListener("click", () => {
         document
           .querySelectorAll(".library-row")
@@ -249,16 +295,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function fillDropdowns() {
+    if (!filterSeason || !advancedTagsContainer) return;
+
     const seasons = uniqSorted(
       SCENE_PACKS.flatMap((p) =>
         Array.isArray(p.season) ? p.season : [p.season]
       )
     );
+
     advancedTagsContainer.innerHTML = "";
 
-    // MASTER TAG STRUCTURE
     const TAG_GROUPS = {
-      "RELATIONSHIPS": [
+      RELATIONSHIPS: [
         "chenford",
         "wopez",
         "bailan",
@@ -268,9 +316,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "tim/angela",
         "angela/nyla",
         "john/lucy",
-         "nyla/lucy"
+        "nyla/lucy"
       ],
-      "CHARACTERS": [
+      CHARACTERS: [
         "lucy chen",
         "tim bradford",
         "angela lopez",
@@ -282,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "miles penn",
         "supporting characters"
       ],
-      "DYNAMICS": [
+      DYNAMICS: [
         "slow burn",
         "hurt & comfort",
         "jealousy",
@@ -294,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "comedic",
         "action"
       ],
-      "STORYLINES": [
+      STORYLINES: [
         "undercover ops",
         "parallels",
         "story arcs",
@@ -307,20 +355,16 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     };
 
-    // Render groups
     Object.entries(TAG_GROUPS).forEach(([groupName, tags]) => {
-
-      // Section label
       const label = document.createElement("div");
       label.className = "advanced-group-label";
       label.textContent = groupName;
       advancedTagsContainer.appendChild(label);
 
-      // Chip container
       const groupWrap = document.createElement("div");
       groupWrap.className = "advanced-group-wrap";
 
-      tags.forEach(tag => {
+      tags.forEach((tag) => {
         const chip = document.createElement("div");
         chip.className = "advanced-chip";
         chip.textContent = tag;
@@ -331,7 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
           chip.classList.toggle("active");
 
           if (selectedAdvancedTags.includes(tag)) {
-            selectedAdvancedTags = selectedAdvancedTags.filter(t => t !== tag);
+            selectedAdvancedTags = selectedAdvancedTags.filter((t) => t !== tag);
           } else {
             selectedAdvancedTags.push(tag);
           }
@@ -345,13 +389,13 @@ document.addEventListener("DOMContentLoaded", () => {
       advancedTagsContainer.appendChild(groupWrap);
     });
 
-
-
-    // keep first placeholder option, replace the rest
     const fill = (selectEl, values) => {
+      if (!selectEl) return;
+
       const first = selectEl.options[0];
       selectEl.innerHTML = "";
-      selectEl.appendChild(first);
+      if (first) selectEl.appendChild(first);
+
       values.forEach((v) => {
         const opt = document.createElement("option");
         opt.value = v;
@@ -365,7 +409,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyFilters() {
     const q = (searchInput.value || "").trim().toLowerCase();
-    const season = filterSeason.value;
+    const season = filterSeason ? filterSeason.value : "";
 
     const filtered = SCENE_PACKS.filter((p) => {
       const matchesSearch =
@@ -379,78 +423,81 @@ document.addEventListener("DOMContentLoaded", () => {
         (Array.isArray(p.season)
           ? p.season.includes(season)
           : p.season === season);
+
       const matchesAdvanced =
         selectedAdvancedTags.length === 0 ||
-        selectedAdvancedTags.every(tag =>
-          (p.tags || []).includes(tag)
-        );
+        selectedAdvancedTags.every((tag) => (p.tags || []).includes(tag));
 
-
-      return (
-        matchesSearch &&
-        matchesSeason &&
-        matchesAdvanced
-      );
+      return matchesSearch && matchesSeason && matchesAdvanced;
     });
 
-    statTotal.textContent = String(filtered.length);
-    statLatest.textContent = latestDate(filtered);
+    if (statTotal) statTotal.textContent = String(filtered.length);
+    if (statLatest) statLatest.textContent = latestDate(filtered);
 
     renderTable(filtered);
 
     if (filtered.length === 0) {
-      infoTitle.textContent = "No scene pack found.";
-      infoSeason.textContent = "—";
-      infoTags.innerHTML = "";
+      if (infoTitle) infoTitle.textContent = "No scene pack found.";
+      if (infoSeason) infoSeason.textContent = "—";
+      if (infoEpisodes) infoEpisodes.textContent = "—";
+      if (infoTags) infoTags.innerHTML = "";
       setPreview("");
-      downloadBtn.disabled = true;
+
+      if (downloadBtn) {
+        downloadBtn.disabled = true;
+        downloadBtn.dataset.href = "";
+      }
+
+      if (infoNotes) infoNotes.textContent = "—";
     }
   }
 
-  /***********************
-   * 4) EVENTS
-   ***********************/
-  [filterSeason].forEach((sel) => {
-    sel.addEventListener("change", applyFilters);
-  });
+  /* =======================
+     EVENTS
+     ======================= */
+  if (filterSeason) {
+    filterSeason.addEventListener("change", applyFilters);
+  }
 
-  filterClear.addEventListener("click", () => {
-    filterSeason.value = "";
-    searchInput.value = "";
+  if (filterClear) {
+    filterClear.addEventListener("click", () => {
+      if (filterSeason) filterSeason.value = "";
+      searchInput.value = "";
 
-    // Clear advanced tags
-    selectedAdvancedTags = [];
-    document.querySelectorAll(".advanced-chip").forEach(chip =>
-      chip.classList.remove("active")
-    );
+      selectedAdvancedTags = [];
+      document.querySelectorAll(".advanced-chip").forEach((chip) => {
+        chip.classList.remove("active");
+      });
 
-    applyFilters();
-  });
+      applyFilters();
+    });
+  }
 
+  if (searchButton) {
+    searchButton.addEventListener("click", applyFilters);
+  }
 
-  searchButton.addEventListener("click", applyFilters);
   searchInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") applyFilters();
   });
 
-  downloadBtn.addEventListener("click", () => {
-    const href = downloadBtn.dataset.href;
-    if (href) window.open(href, "_blank");
-  });
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", () => {
+      const href = downloadBtn.dataset.href;
+      if (href) window.open(href, "_blank");
+    });
+  }
 
-  /***********************
-   * 5) INIT
-   ***********************/
+  /* =======================
+     INIT
+     ======================= */
   fillDropdowns();
 
-  statTotal.textContent = String(SCENE_PACKS.length);
-  statLatest.textContent = latestDate(SCENE_PACKS);
+  if (statTotal) statTotal.textContent = String(SCENE_PACKS.length);
+  if (statLatest) statLatest.textContent = latestDate(SCENE_PACKS);
 
   renderTable(SCENE_PACKS);
 
-  /* =========================================
-     AUTO SEARCH IF ARRIVED FROM OTHER PAGE
-     ========================================= */
   const params = new URLSearchParams(window.location.search);
   const searchQuery = params.get("search");
 
@@ -464,5 +511,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 console.log(
   "DATA LOADED",
-  typeof SCENE_PACKS !== "undefined" ? SCENE_PACKS.length : "SCENE_PACKS not loaded"
+  typeof SCENE_PACKS !== "undefined"
+    ? SCENE_PACKS.length
+    : "SCENE_PACKS not loaded"
 );
