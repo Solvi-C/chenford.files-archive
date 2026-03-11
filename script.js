@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("search-input");
   const button = document.getElementById("search-button");
   const logoutBtn = document.getElementById("log-out");
-  
+
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
       window.location.href = "https://www.instagram.com/chenford.files/";
@@ -38,27 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") handleSearch();
   });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const statTotal = document.getElementById("stat-total");
-  const statLatest = document.getElementById("stat-latest");
-
-  if (statTotal && statLatest && typeof SCENE_PACKS !== "undefined") {
-
-    statTotal.textContent = SCENE_PACKS.length;
-
-    const dates = SCENE_PACKS
-      .map(p => p.dateAdded)
-      .filter(Boolean)
-      .sort();
-
-    statLatest.textContent = dates.length
-      ? dates[dates.length - 1]
-      : "—";
-  }
-
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -133,11 +112,25 @@ document.addEventListener("DOMContentLoaded", () => {
       .sort((a, b) => Number(a) - Number(b));
 
   function latestDate(packs) {
-    const dates = packs.map((p) => p.dateAdded).filter(Boolean);
-    if (!dates.length) return "—";
-    // assumes consistent format like 01-02-2026
-    return dates.sort().slice(-1)[0];
-  }
+  const validDates = packs
+    .map((p) => p.dateAdded)
+    .filter(Boolean)
+    .map((dateStr) => {
+      const [month, day, year] = dateStr.split("-").map(Number);
+      const parsedDate = new Date(year, month - 1, day);
+
+      return {
+        original: dateStr,
+        parsed: parsedDate
+      };
+    })
+    .filter((d) => !isNaN(d.parsed.getTime()));
+
+  if (!validDates.length) return "—";
+
+  validDates.sort((a, b) => b.parsed - a.parsed);
+  return validDates[0].original;
+}
 
   function setPreview(previewUrl) {
     if (!previewUrl) {
@@ -433,7 +426,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     applyFilters();
   });
-  
+
 
   searchButton.addEventListener("click", applyFilters);
   searchInput.addEventListener("keydown", (e) => {
@@ -469,4 +462,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.applyFilters = applyFilters;
 });
 
-console.log("DATA LOADED", SCENE_PACKS.length);
+console.log(
+  "DATA LOADED",
+  typeof SCENE_PACKS !== "undefined" ? SCENE_PACKS.length : "SCENE_PACKS not loaded"
+);
