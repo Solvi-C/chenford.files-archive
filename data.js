@@ -11,7 +11,7 @@ const SCENE_PACKS = [
       dateAdded: "03-11-2026",
       size: "484.6MB",
       download: "https://mega.nz/file/QsxAQD7Z#rKFnMqOONwkDPUE_D9IZKRnmDJip1DUMw82Etxnfvmc",
-      preview: "",
+      preview: "scenepack photos/hisnamewasmartin.png",
       notes: "",
     },
   
