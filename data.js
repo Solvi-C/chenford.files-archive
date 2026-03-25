@@ -2,11 +2,22 @@
  * 1) YOUR DATA HERE
  ***********************/
 const SCENE_PACKS = [
+      {
+      id: "S812A",
+      title: "The Sting Operation",
+      season: "8",
+      tags: ["full cast", "story arc", "action"],
+      dateAdded: "03-25-2026",
+      size: "726.5MB",
+      download: "https://mega.nz/file/sjcThaYK#LfKx4XWzafL1erQQLMujwHg8MGTcmN4HF_MimcOrXZM",
+      preview: "scenepack photos/thestingoperation.png",
+      notes: "",
+    },
+      
 {
-      id: "S710A",
+      id: "S810A",
       title: '"His Name Was Martin"',
       season: "8",
-      episodes: ["10"],
       tags: ["lucy chen", "angst", "action", "story arc", "chenford"],
       dateAdded: "03-11-2026",
       size: "484.6MB",
@@ -32,11 +43,11 @@ const SCENE_PACKS = [
       title: "Chenford Season 8",
       season: "8",
       tags: ["chenford", "lucy chen", "tim bradfod", "compilation", "romance", "still updating"],
-      dateAdded: "03-11-2026",
-      size: "1.36 GB",
-      download: "https://mega.nz/file/N9QG3ZbJ#KJy07Ja67dPuxxciZATY6z8JBL4Re2FZQjyu1Ce3ul4",
+      dateAdded: "03-25-2026",
+      size: "1.45 GB",
+      download: "https://mega.nz/file/RnNGxZwI#KIZi5fRoqceR2VRW6N38yEfJLnJ-MerDQNVNhmTj33g",
       preview: "scenepack photos/chenfords8.JPEG",
-      notes: "up to episode 11 (Aftermath)",
+      notes: "up to episode 12 (Spy Games)",
     },
   
   {
