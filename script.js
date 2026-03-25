@@ -328,6 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "john nolan",
         "wade grey",
         "miles penn",
+        "full cast",
         "supporting characters"
       ],
       DYNAMICS: [
