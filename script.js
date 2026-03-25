@@ -340,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "domestic",
         "angst",
         "soft",
-        "comedic",
+        "comedy",
         "action"
       ],
       STORYLINES: [
