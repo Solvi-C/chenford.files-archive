@@ -10,7 +10,7 @@ const SCENE_PACKS = [
       dateAdded: "03-25-2026",
       size: "726.5MB",
       download: "https://mega.nz/file/sjcThaYK#LfKx4XWzafL1erQQLMujwHg8MGTcmN4HF_MimcOrXZM",
-      preview: "scenepack photos/thestingoperation.png",
+      preview: "scenepack photos/thestingoperation.jpg",
       notes: "",
     },
       
