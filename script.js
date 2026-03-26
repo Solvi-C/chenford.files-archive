@@ -354,7 +354,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "pre-chenford",
         "broken up chenford",
          "extended cut",
-         "regular cut",
          "direct cut"
       ]
     };
