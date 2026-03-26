@@ -30,7 +30,7 @@ const SCENE_PACKS = [
       id: "S807A",
       title: "Baja UC",
       season: "8",
-      tags: ["lucy chen", "nyla harper", "nyla/lucy", "chenford", "jyla", "action", "angst", "undercover op", "story arc"],
+      tags: ["lucy chen", "nyla harper", "nyla/lucy", "chenford", "jyla", "action", "angst", "undercover op", "story arc", "extended cut"],
       dateAdded: "02-23-2026",
       size: "557.9MB",
       download: "https://mega.nz/file/NlwVlQ6C#1yFD9igdutZG4Dth6RmtCygTAR4cSpWc2RbQj0R289U",
@@ -42,12 +42,13 @@ const SCENE_PACKS = [
       id: "S801A",
       title: "Chenford Season 8",
       season: "8",
-      tags: ["chenford", "lucy chen", "tim bradfod", "compilation", "romance", "still updating"],
+      tags: ["chenford", "lucy chen", "tim bradfod", "compilation", "romance", "still updating", "extended cut"],
       dateAdded: "03-25-2026",
       size: "1.45 GB",
       download: "https://mega.nz/file/RnNGxZwI#KIZi5fRoqceR2VRW6N38yEfJLnJ-MerDQNVNhmTj33g",
       preview: "scenepack photos/chenfords8.JPEG",
-      notes: "up to episode 12 (Spy Games)",
+      notes: `up to episode 12 (Spy Games)
+            - includes mentions of them`,
     },
   
   {
