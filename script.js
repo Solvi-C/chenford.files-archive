@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!wrapper || !advancedTagsContainer) return;
 
     wrapper.classList.remove("open");
-    advancedTagsContainer.classList.remove("show");
+    advancedContainer.classList.remove("show");
   }
 
   document.addEventListener("click", (e) => {
@@ -352,7 +352,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "MISC TAGS": [
         "still updating",
         "pre-chenford",
-        "broken up chenford"
+        "broken up chenford",
+         "extended cut",
+         "regular cut",
+         "direct cut"
       ]
     };
 
