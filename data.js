@@ -44,10 +44,10 @@ const SCENE_PACKS = [
       season: "8",
       tags: ["chenford", "lucy chen", "tim bradfod", "compilation", "romance", "still updating", "extended cut"],
       dateAdded: "03-25-2026",
-      size: "1.45 GB",
-      download: "https://mega.nz/file/RnNGxZwI#KIZi5fRoqceR2VRW6N38yEfJLnJ-MerDQNVNhmTj33g",
+      size: "2.11 GB",
+      download: "https://mega.nz/file/l21XTCiI#nbBGIg-0bS6e4dmu6ZOBn8yoW9k-ibGOuD-KF-no2b0",
       preview: "scenepack photos/chenfords8.JPEG",
-      notes: `up to episode 12 (Spy Games)
+      notes: `up to episode 13 (The Thinker)
             - includes mentions of them`,
     },
   
