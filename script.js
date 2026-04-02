@@ -355,7 +355,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "broken up chenford",
         "extended cut",
         "direct cut",
-        "regular cut"
+        "regular cut",
+         "folder"
       ]
     };
 
