@@ -42,13 +42,15 @@ const SCENE_PACKS = [
       id: "S801A",
       title: "Chenford Season 8",
       season: "8",
-      tags: ["chenford", "lucy chen", "tim bradfod", "compilation", "romance", "still updating", "extended cut"],
+      tags: ["chenford", "lucy chen", "tim bradfod", "compilation", "romance", "still updating", "regular cut", "direct cut"],
       dateAdded: "03-25-2026",
-      size: "2.11 GB",
-      download: "https://mega.nz/file/l21XTCiI#nbBGIg-0bS6e4dmu6ZOBn8yoW9k-ibGOuD-KF-no2b0",
+      size: "N/A",
+      download: "https://mega.nz/folder/l28TlCpL#sClNJEwKCt3zlW3nt0X7YQ",
       preview: "scenepack photos/chenfords8.JPEG",
       notes: `up to episode 13 (The Thinker)
-            - includes mentions of them`,
+            - contains regular cut (includes mentions and any scenes they are in the same place) and direct cut (only shows chenford, no other characters)
+            - regular cut: 2.11GB
+            - direct cut: 1.41GB`,
     },
   
   {
@@ -406,7 +408,7 @@ const SCENE_PACKS = [
     season: "5",
     tags: ["chenford", "lucy chen", "tim bradford", "romance", "soft", "compilation"],
     dateAdded: "03-07-2025",
-    size: "1.48B",
+    size: "1.48GB",
     download: "https://mega.nz/file/9C833RQb#7oS2c1SVQ9AUE_iJuEUySHwFfutQm6yXwVnfQvhRTU0",
     preview: "scenepack photos/firstdates.jpg",
     notes: "",
