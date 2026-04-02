@@ -43,7 +43,7 @@ const SCENE_PACKS = [
       title: "Chenford Season 8",
       season: "8",
       tags: ["chenford", "lucy chen", "tim bradfod", "compilation", "romance", "still updating", "regular cut", "direct cut", "folder"],
-      dateAdded: "03-25-2026",
+      dateAdded: "04-01-2026",
       size: "N/A",
       download: "https://mega.nz/folder/l28TlCpL#sClNJEwKCt3zlW3nt0X7YQ",
       preview: "scenepack photos/chenfords8.JPEG",
