@@ -353,8 +353,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "still updating",
         "pre-chenford",
         "broken up chenford",
-         "extended cut",
-         "direct cut"
+        "extended cut",
+        "direct cut",
+        "regular cut"
       ]
     };
 
