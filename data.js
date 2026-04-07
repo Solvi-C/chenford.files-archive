@@ -3,6 +3,18 @@
  ***********************/
 const SCENE_PACKS = [
       {
+  id: "S701A",
+  title: "Chenford Season 7",
+  season: "7",
+  tags: ["chenford", "lucy chen", "tim bradford", "slow burn", "hurt & comfort", "romance", "comedy", "action", "compilations", "broken up chenford"],
+  dateAdded: "04-07-2026",
+  size: "3.86GB",
+  download: "https://mega.nz/file/C85E2IyY#0JPj9mBGVJzOMuZ0AB58QOwXW5lrcCkuXPmLoAByYUQ",
+  preview: "scenepack photos/chenfordseason7.png",
+  notes: ``,
+},										
+      
+      {
       id: "S812A",
       title: "The Sting Operation",
       season: "8",
